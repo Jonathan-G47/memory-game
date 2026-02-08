@@ -1,0 +1,111 @@
+/* ===========================
+   ESTILOS GENERALES
+   =========================== */
+
+/* Estilo base del cuerpo */
+body {
+    margin: 0;
+    background-color: black;
+    color: white;
+    font-family: sans-serif;
+    overflow-x: hidden;
+}
+
+/* Contenedor principal centrado */
+#wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+/* Título */
+h1 {
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+/* ===========================
+   ÁREA DEL JUEGO
+   =========================== */
+
+/* Contenedor de cartas: grid flexible */
+#game {
+    display: grid;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+
+    /* Grid responsive automático */
+    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+    width: 100%;
+    max-width: 800px;
+}
+
+/* ===========================
+   CARTAS
+   =========================== */
+
+/* Carta base */
+.card {
+    width: 100%;
+    aspect-ratio: 7 / 10; /* Mantiene proporción en móviles */
+    position: relative;
+    transition: transform 0.5s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+}
+
+/* Estado volteado */
+.card.active {
+    transform: rotateY(180deg);
+}
+
+/* Caras de la carta */
+.card .face,
+.card .back {
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    backface-visibility: hidden;
+    font-size: 2.5rem;
+}
+
+/* Cara frontal */
+.card .face {
+    background-color: purple;
+    color: white;
+    transform: rotateY(180deg);
+}
+
+/* Cara trasera */
+.card .back {
+    background-color: black;
+    border: 2px solid purple;
+}
+
+/* ===========================
+   RESPONSIVE
+   =========================== */
+
+/* Móviles pequeños */
+@media (max-width: 480px) {
+    .card .face,
+    .card .back {
+        font-size: 1.8rem;
+    }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+    .card .face,
+    .card .back {
+        font-size: 2.2rem;
+    }
+}
